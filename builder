@@ -15,8 +15,8 @@ main() {
 			i686-linux-gnu \
 			--prefix="$prefix" \
 			--libdir="$prefix/lib" \
-			--libexecdir="$prefix/lib" \
-		make && make install
+			--libexecdir="$prefix/lib" > /dev/null
+		make -s && make install
 		tar --hard-dereference -zcf "/glibc-bin-$version.tar.gz" "$prefix"
 	} >&2
 
