@@ -15,12 +15,12 @@ dependencies:
     - git fetch --tags
     - go get github.com/tcnksm/ghr
   override:
-    - docker pull codehz/glibc-builder
+    - docker build . -t glibc-builder
 test:
   pre:
     - mkdir -p artifacts
   override:
-    - "docker run --rm -e STDOUT=1 codehz/glibc-builder $GLIBC_VERSION /usr/glibc-compat > artifacts/glibc-bin-$GLIBC_VERSION-i686.tar.gz"
+    - "docker run --rm -e STDOUT=1 glibc-builder $GLIBC_VERSION /usr/glibc-compat > artifacts/glibc-bin-$GLIBC_VERSION-i686.tar.gz"
 deployment:
   release:
     tag: /[0-9]+(\.[0-9]+){1,2}(\-r\d+)?$/

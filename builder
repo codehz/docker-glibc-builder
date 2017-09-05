@@ -12,11 +12,7 @@ main() {
 			| tar zxf -
 		mkdir -p /glibc-build && cd /glibc-build
 		"/glibc-$version/configure" \
-			--host=i686-linux-gnu \
-			--build=i686-linux-gnu \
-			"CFLAGS=-m32 -O2-march=i686" \
-			"CXXFLAGS=-m32 -O2 -march=i686" \
-			"LDFLAGS=-m32" \
+			i686-linux-gnu \
 			--prefix="$prefix" \
 			--libdir="$prefix/lib" \
 			--libexecdir="$prefix/lib" \
